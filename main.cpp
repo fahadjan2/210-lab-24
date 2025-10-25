@@ -1,4 +1,4 @@
-// COMSC-210 | Lab 24 | Fahad Fawad Ahmad 
+// COMSC-210 | Lab 25 | Fahad Fawad Ahmad 
 // IDE used: Visual Studio
 #include <iostream>
 #include <fstream>
