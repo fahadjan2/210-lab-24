@@ -1,18 +1,18 @@
-// COMSC-210 | Lab 23 | Fahad Fawad Ahmad 
+// COMSC-210 | Lab 24 | Fahad Fawad Ahmad 
 // IDE used: Visual Studio
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <list>
+#include <set>
 #include "Goat.h"
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
-int select_goat(list<Goat> trip);
-void delete_goat(list<Goat> &trip);
-void add_goat(list<Goat> &trip, string [], string []);
-void display_trip(list<Goat> trip);
+int select_goat(set<Goat> trip);
+void delete_goat(set<Goat> &trip);
+void add_goat(set<Goat> &trip, string [], string []);
+void display_trip(set<Goat> trip);
 int main_menu();
 
 int main() {
@@ -31,8 +31,7 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-    cout << "test1542" << endl;
-    list<Goat> trip;
+    set<Goat> trip;
 
     int choice = main_menu();
     while (choice != 4) {
@@ -69,7 +68,7 @@ int main_menu() {
 }
 
 //Selects a specific goat from the trip
-int select_goat(list<Goat> trip) {
+int select_goat(set<Goat> trip) {
     display_trip(trip);
     int choice;
     cout << "Select a goat: ";
@@ -79,7 +78,7 @@ int select_goat(list<Goat> trip) {
 }
 
 //Deletes a goat selected by user
-void delete_goat(list<Goat> &trip) {
+void delete_goat(set<Goat> &trip) {
     int choice = select_goat(trip);
     int count = 1;
     for (auto it = trip.begin(); it != trip.end(); ++it) {
@@ -93,7 +92,7 @@ void delete_goat(list<Goat> &trip) {
 }
 
 //Adds goat with random elements
-void add_goat(list<Goat> &trip, string n[] , string c[]) {
+void add_goat(set<Goat> &trip, string n[] , string c[]) {
     int randNum = rand() % SZ_NAMES;
     string name =  n[randNum];
     randNum = rand() % SZ_COLORS;
@@ -101,11 +100,11 @@ void add_goat(list<Goat> &trip, string n[] , string c[]) {
     randNum = rand() % (MAX_AGE + 1);
     int age = randNum;
 
-    trip.push_back(Goat(name, age, color));
+    trip.insert(Goat(name, age, color));
 }
 
 //Displays the goats
-void display_trip(list<Goat> trip) {
+void display_trip(set<Goat> trip) {
     int count = 0;
     for (Goat g : trip) {
         count++;
